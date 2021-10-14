@@ -1,0 +1,31 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<div class="d-inline-flex align-items-center ">
+    <h3 class="my-5 mr-4">Listado de aerolineas</h3>
+    <div>
+        <button class="btn btn-outline-primary" onclick="location.href='@Url.Action("AddAirline", "Airline")'">Añadir aerolinea</button>
+    </div>
+</div>
+
+<table class="table">
+    <tr>
+        <th>Compañia</th>
+        <th>Año de creación</th>
+        <th>Aviones</th>
+        <th>Facturación media</th>
+        <th>Link</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Item1.Name   </td>
+            <td>@item.Item1.CreationYear   </td>
+            <td>@item.Item2</td>
+            <td>@item.Item1.AvgAnnualInvoicing</td>
+            <td><button class="btn btn-primary" onclick="location.href='@Url.Action("showDetails", "Airline", new { id = item.Item1.Id } )'">Ver detalles</button></td>
+        </tr>
+    }
+</table>

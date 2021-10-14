@@ -1,0 +1,27 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<h3 class="my-5">Listado de pasajeros, ordenados según las veces que han volado</h3>
+
+<table class="table">
+    <tr>
+        <th>Nombre</th>
+        <th>DNI</th>
+        <th>Cumpleaños</th>
+        <th>Jubilado</th>
+        <th>Link</th>
+    </tr>
+
+    @foreach (var passenger in Model)
+    {
+        <tr>
+            <td>@passenger.FullName  </td>
+            <td>@passenger.Dni</td>
+            <td>@(passenger.BirthDate.ToString("dd/MM/yyyy"))</td>
+            <td>@(passenger.Retired ? "Si" : "No") </td>
+            <td><button class="btn btn-primary" onclick="location.href='@Url.Action("showDetails", "Passenger", new { dni = passenger.Dni} )'">Ver detalles</button></td>
+        </tr>
+    }
+</table>
